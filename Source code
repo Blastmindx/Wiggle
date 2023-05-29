@@ -1,1 +1,734 @@
+#!/bin/bash
 
+while [[ "$REPLY" != 0 ]]; do
+#Clears anything on the terminal 
+    clear
+#Making people wait even though theres no need. (cause its funny)
+
+#This command is called a here-document it is used to have a block of text display in this chase "Wiggle", The EOF or End Of File tells when the here-document ends
+cat <<_EOF_
+
+
+┏┓┏┓┏┓╋╋╋╋╋╋┏┓
+┃┃┃┃┃┃╋╋╋╋╋╋┃┃
+┃┃┃┃┃┣┳━━┳━━┫┃┏━━┓
+┃┗┛┗┛┣┫┏┓┃┏┓┃┃┃┃━┫
+┗┓┏┓┏┫┃┗┛┃┗┛┃┗┫┃━┫
+╋┗┛┗┛┗┻━┓┣━┓┣━┻━━┛
+╋╋╋╋╋╋┏━┛┣━┛┃
+╋╋╋╋╋╋┗━━┻━━┛
+
+██░░░░░░
+_EOF_
+
+#This command displays the word loading 
+echo "loading"
+sleep 1
+clear
+cat <<_EOF_
+
+
+┏┓┏┓┏┓╋╋╋╋╋╋┏┓
+┃┃┃┃┃┃╋╋╋╋╋╋┃┃
+┃┃┃┃┃┣┳━━┳━━┫┃┏━━┓
+┃┗┛┗┛┣┫┏┓┃┏┓┃┃┃┃━┫
+┗┓┏┓┏┫┃┗┛┃┗┛┃┗┫┃━┫
+╋┗┛┗┛┗┻━┓┣━┓┣━┻━━┛
+╋╋╋╋╋╋┏━┛┣━┛┃
+╋╋╋╋╋╋┗━━┻━━┛
+
+████░░░░
+_EOF_
+
+#This command displays the word loading 
+echo "loading."
+sleep 1
+clear
+
+cat <<_EOF_
+
+
+┏┓┏┓┏┓╋╋╋╋╋╋┏┓
+┃┃┃┃┃┃╋╋╋╋╋╋┃┃  
+┃┃┃┃┃┣┳━━┳━━┫┃┏━━┓
+┃┗┛┗┛┣┫┏┓┃┏┓┃┃┃┃━┫
+┗┓┏┓┏┫┃┗┛┃┗┛┃┗┫┃━┫
+╋┗┛┗┛┗┻━┓┣━┓┣━┻━━┛
+╋╋╋╋╋╋┏━┛┣━┛┃
+╋╋╋╋╋╋┗━━┻━━┛
+
+██████░░
+_EOF_
+
+#This command displays the word loading 
+echo "loading.."
+sleep 1
+clear 
+
+cat <<_EOF_
+
+
+┏┓┏┓┏┓╋╋╋╋╋╋┏┓
+┃┃┃┃┃┃╋╋╋╋╋╋┃┃  
+┃┃┃┃┃┣┳━━┳━━┫┃┏━━┓
+┃┗┛┗┛┣┫┏┓┃┏┓┃┃┃┃━┫
+┗┓┏┓┏┫┃┗┛┃┗┛┃┗┫┃━┫
+╋┗┛┗┛┗┻━┓┣━┓┣━┻━━┛
+╋╋╋╋╋╋┏━┛┣━┛┃
+╋╋╋╋╋╋┗━━┻━━┛
+
+████████
+_EOF_
+
+#This command displays the word loading 
+echo "loading..."
+sleep 1
+clear 
+
+# Gui with base command to be selected, e.x Select tcp rule or RDP rule or ARP, UDP
+#This command is called a here-document it is used to have a block of text display in this chase asking what type of filewll rule is wanted, The EOF or End Of File tells when the here-document ends   
+    cat <<_EOF_
+
+    What type of firewall rule do you want to create? (enter corresponding number)
+
+    1. TCP Rule - A TCP or Transmission Control Protocol is a protocol/rule that is used across the internet
+       for programs and devices to exchange messages, unlike UDP which is used for speed, TCP is used if you
+       don't want data loss with transmitting. 
+
+    2. UDP Rule - A UDP or User Datagram Protocol is a protocol/rule that is used across the internet for
+       applications or transmissions that need to be faster like streaming videos, Gaming, Live broadcasts etc.
+
+    3. ICMP Rule - ICMP or Internet Control Message Protocol is a protocol that is used to locate and diagnose
+       communication issues within a network.
+
+    4. Exit
+  
+_EOF_
+#The EOF or End Of File tells when the here-document ends  
+
+#This is asking for input between 1-4 if 1 is chosen then it will echo "Creating a TCP rule and Please provide the following information in the case being the IP address, when the IP is entered it will verify if it meets the format set the specific pattern of three sets of one to three digits separated by periods if it meets that format it will break and continue if not it will ask to enter a valid IP
+
+    read -p "Enter your choice (1-4): "
+	clear
+    if [[ "$REPLY" =~ ^[1-4]$ ]]; then
+        case $REPLY in
+            1)
+                echo "Creating a TCP rule!"
+		echo " "
+                echo "Please provide the following information:"
+		echo " "
+                while true; do
+#local ip
+                echo "Local IP - A local IP is a set of numbers that are assigned to every computer in order to identify the pc."
+                echo "This option is asking for your PC's local IP. To find it you can execute the command ipconfig in"
+                echo "powershell or command prompt (press windows key and search for powershell or cmd) and enter that command."
+                echo "You will then see a list of network info, look for an item titled IPV4 address and copy it bellow."
+                echo " "
+                read -p "Local IP address: " local_ip
+                        if [[ $local_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\.[0-9]{1,3}$|^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    # IP address is valid
+                        break
+
+                        else
+    # IP address is not valid
+                        echo "IP address $local_ip is not valid"
+     #Sleep twice then clear 
+                        sleep 2
+                        clear
+
+                    #finish 
+                        fi
+                done
+
+
+		clear
+#local port
+		while true;do
+		echo "Local Port - A local port has a number or port assigned to it that it the computer to send and receive"
+ 		echo "information over a network or the internet. When you visit any website like Google the computer is using"
+		echo "port number 80 to visit that website. This option is asking you a port number you would want to monitor,"
+		echo "therefore if you want to see who is going on a website on that pc or network then you would use port 80 inbound."
+	#a space 
+    	echo " "
+	
+#    This code is a loop that asks the user to enter a port number, If the input matches the valid number set between 1-65536 if the number entered is between that then the loop will break and continue if not then the error message displays 
+    	read -p "Local Port: " local_port
+  			if [[ $local_port =~ ^[1-9][0-9]{0,4}$ && $port -le 65536 ]]; then
+
+   			break
+ 
+			else
+    # port is not valid
+    			echo "Port $local_port is not a valid port number"
+# sleep twice then clear 
+    			sleep 2
+    			clear
+     #finish	
+            fi
+
+		done
+
+
+		clear
+#remote ip
+	#This code is asking for the remote IP, When the IP is entered it will verify if it meets the format set the specific pattern of three sets of one to three digits separated by periods if it meets that format it will break and continue if not it will ask to enter a valid IP 
+    	while true; do
+                echo "Remote IP - A Remote IP is that same set of numbers but corresponding to" 
+		echo "the system you're making the rule to protect against."
+                echo " "
+                read -p "Remote IP address: " remote_ip
+                        if [[ $remote_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\.[0-9]{1,3}$|^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    # IP address is valid
+                        break
+
+
+                        else
+    # IP address is not valid
+                        echo "IP address $remote_ip is not valid"
+             #sleep twice then clear 
+                        sleep 2
+                        clear
+
+                        fi
+                done
+
+
+		clear
+#remote port
+#This code is a loop that asks the user to enter a remote port number, If the input matches the valid number set between 1-65536 if the number entered is between that then the loop will break and continue if not then the error message displays
+                while true;do
+		    echo "Remote Port - A remote port has a number or port assigned to it allowing the computer to send and receive"
+		    echo "information over a network or the internet. When you visit any website like Google the computer is using"
+		    echo "port number 80 to visit that website."
+                echo " "
+                read -p "Remote Port: " remote_port
+                        if [[ $remote_port =~ ^[1-9][0-9]{0,4}$ && $port -le 65536 ]]; then
+
+                        break
+ 
+                        else
+    # port is not valid 
+                        echo "Port $remote_port is not a valid port number"
+             #sleep twice then clear 
+                        sleep 2
+                        clear
+                        fi
+
+                done
+
+
+
+		clear
+#display name
+#This code is asking for a user to input a display name, after entering a name the loop will allow the user to continue 
+
+                echo "Display Name - This is the name of the firewall rule you are making."
+		echo "Make sure to name it something that you can easily remember the purpose of the rule."
+		echo " "
+                read -p "Display Name: " display_name
+                clear
+		while true; do
+                	echo "Inbound or Outbound - This option is asking if you want either inbound or outbound traffic to be monitored."
+			echo "Inbound refers to any data that is coming from another pc/network to your pc/network."
+			echo "When you visit a website you are getting inbound traffic, on the other hand,"
+			echo "outbound means any data and information that is leaving your pc/network."
+			echo "For example, when you upload a youtube video, that traffic is outbound."
+			echo " "
+            #This code is asking the user to type either inbound or outbound for monitoring traffic if something different is given then the error message will appear 
+			read -p "Please enter either 'inbound' or 'outbound': " bound_wiggle
+    			if [[ $bound_wiggle == "inbound" || $bound_wiggle == "outbound" ]]; then
+        			break
+    			else
+        		echo "Incorrect input. See options."
+		 #sleep twice then clear 
+        	sleep 2
+			clear
+    			fi
+		done
+                echo " "
+		clear
+
+                # Final PowerShell command
+                #This code takes all the input given and puts it in a final PowerShell command and then asks the user either exit or press x to continue 
+                echo "The final PowerShell command is:"
+                echo " "
+		echo "New-NetFirewallRule -DisplayName $display_name -Direction $bound_wiggle -LocalAddress $local_ip -LocalPort $local_port -RemoteAddress $remote_ip -RemotePort $remote_port -Protocol TCP"
+                echo " "
+		echo "Press any key to continue"
+                read -n 1 -s
+                ;;
+             2)
+        #This is asking for input between 1-4 if 2 is chosen then it will echo "Creating a UDP rule and Please provide the following information in the case being the IP address, when the IP is entered it will verify if it meets the format set the specific pattern of three sets of one to three digits separated by periods if it meets that format it will break and continue if not it will ask to enter a valid IP
+                echo "Creating a UDP rule!"
+		echo " "
+                echo "Please provide the following information:"
+		echo " "
+#local ip
+		while true; do
+                echo "Local IP - A local IP is a set of numbers that are assigned to every computer in order to identify the pc."
+                echo "This option is asking for your PC's local IP. To find it you can execute the command ipconfig in"
+                echo "powershell or command prompt (press windows key and search for powershell or cmd) and enter that command."
+                echo "You will then see a list of network info, look for an item titled IPV4 address and copy it bellow."
+                echo " "
+                read -p "Local IP address: " local_ip
+                        if [[ $local_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\.[0-9]{1,3}$|^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    # IP address is valid
+                        break
+
+                        else
+    # IP address is not valid
+                        echo "IP address $local_ip is not valid"
+    #sleep twice then clear                   
+                        sleep 2
+                        clear  
+
+                        fi
+                done
+
+
+                clear
+
+
+
+		clear
+#local port
+#This code is a loop that asks the user to enter a port number, If the input matches the valid number set between 1-65536 if the number entered is between that then the loop will break and continue if not then the error message displays 
+                while true;do
+                echo "Local Port - A local port has a number or port assigned to it that it the computer to send and receive"
+                echo "information over a network or the internet. When you visit any website like Google the computer is using"
+                echo "port number 80 to visit that website. This option is asking you a port number you would want to monitor,"
+                echo "therefore if you want to see who is going on a website on that pc or network then you would use port 80 inbound."
+        #a space 
+        echo " "
+                read -p "Local Port: " local_port
+                        if [[ $local_port =~ ^[1-9][0-9]{0,4}$ && $port -le 65536 ]]; then
+
+                        break
+ 
+                        else
+    # port is not valid 
+                        echo "Port $local_port is not a valid port number"
+    #sleep twice then clear                   
+                        sleep 2
+                        clear
+                        fi
+
+                done
+
+
+
+
+
+		clear
+#remote ip
+#This code is asking for the remote IP, When the IP is entered it will verify if it meets the format set the specific pattern of three sets of one to three digits separated by periods if it meets that format it will break and continue if not it will ask to enter a valid IP
+		while true; do
+                echo "Remote IP - A Remote IP is that same set of numbers but corresponding to"
+		echo "the system you're making the rule to protect against."
+                echo " "
+		read -p "Remote IP address: " remote_ip
+  		if [[ $remote_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\.[0-9]{1,3}$|^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    # IP address is valid
+    		if [[ $remote_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\. ]]; then
+      			break
+
+
+    			fi
+  			else
+    # IP address is not valid
+    			echo "IP address $remote_ip is not valid"
+    		#Sleep twice then clear 	
+                sleep 2
+			clear
+  			fi
+		done
+
+		clear
+#remote port
+#This code is a loop that asks the user to enter a remote port number, If the input matches the valid number set between 1-65536 if the number entered is between that then the loop will break and continue if not then the error message displays
+                while true;do
+                    echo "Remote Port - A remote port has a number or port assigned to it allowing the computer to send and receive"
+                    echo "information over a network or the internet. When you visit any website like Google the computer is using"
+                    echo "port number 80 to visit that website."
+                echo " "
+                read -p "Remote Port: " remote_port
+                        if [[ $remote_port =~ ^[1-9][0-9]{0,4}$ && $port -le 65536 ]]; then
+
+                        break
+ 
+                        else
+    # port is not valid 
+                        echo "Port $remote_port is not a valid port number"
+                       #sleep twice then clear
+                        sleep 2
+                        clear
+                        fi
+
+                done
+
+		clear
+#display name
+#This code is asking for a user to input a display name, after entering a name the loop will allow the user to continue 
+
+                echo "Display Name - This is the name of the firewall rule you are making."
+                echo "Make sure to name it something that you can easily remember the purpose of the rule."
+                echo " "
+		read -p "Display Name: " display_name
+		clear
+		while true; do
+                       #This code is asking the user to type either inbound or outbound for monitoring traffic if something different is given then the error message will appear 
+                        echo "Inbound or Outbound - This option is asking if you want either inbound or outbound traffic to be monitored."
+                        echo "Inbound refers to any data that is coming from another pc/network to your pc/network."
+                        echo "When you visit a website you are getting inbound traffic, on the other hand,"
+                        echo "outbound means any data and information that is leaving your pc/network."
+                        echo "For example, when you upload a youtube video, that traffic is outbound."
+                        echo " "
+                        read -p "Please enter either 'inbound' or 'outbound': " bound_wiggle
+                        if [[ $bound_wiggle == "inbound" || $bound_wiggle == "outbound" ]]; then
+                                break
+                        else
+                        echo "Incorrect input. See options."
+                        #sleep twice then clear 
+                        sleep 2
+                        clear
+                        fi
+                done
+
+		echo " "
+		clear
+
+
+                # Final PowerShell command
+                #This code takes all the input given and puts it in a final PowerShell command and then asks the user either exit or press x to continue 
+                echo "The final PowerShell command is:"
+		echo " "
+                echo "New-NetFirewallRule -DisplayName $display_name -Direction $bound_wiggle -LocalAddress $local_ip -LocalPort $local_port -RemoteAddress $remote_ip -RemotePort $remote_port -Protocol UDP"
+		echo " "
+                echo "Press any key to continue"
+                read -n 1 -s
+                ;;
+            3)
+              #This is asking for input between 1-4 if 1 is chosen then it will echo "Creating a ICMP rule and Please provide the following information in the case being the IP address, when the IP is entered it will verify if it meets the format set the specific pattern of three sets of one to three digits separated by periods if it meets that format it will break and continue if not it will ask to enter a valid IP
+                echo "Creating an ICMP rule"
+		echo " "
+                echo "Please provide the following information:"
+		echo " "
+#local ip
+		while true; do
+                echo "Local Ip- A local Ip is a set of numbers that are assigned to every computer to identify the pc, is option is asking for your PC's local IP to find this you can do a command called ipconfig on powershell (press the windows key then search for powershell) and enter that command, You then will see a list of network info, look for one that said IPV4 address and copy that address "
+                echo " "
+                read -p "Local IP address: " local_ip
+                        if [[ $local_ip =~ ^([0-9]{1,3}\.){2}[0-9]{1,3}\.[0-9]{1,3}$|^([0-9]{1,3}\.){3}[0-9]{1,3}$ ]]; then
+    # IP address is valid
+                        break
+
+                        else
+    # IP address is not valid
+                        echo "IP address $local_ip is not valid"
+         #sleep twice then clear 
+                        sleep 2
+                        clear  
+
+                        fi
+                done
+
+
+                clear
+
+		clear
+#icmp message
+# Define a function to validate user input
+function validate_input {
+  #this is an array of all the allowed input that a user can type if they type something not in this array then an error message will echo 
+  valid_icmp=("0" "3" "4" "5" "6" "8" "9" "10" "11" "12" "13" "14" "15" "16" "17" "18" "19" "30" "31" "32" "35" "36" "37" "38" "39" "40" "41" "42" "43" "Echo Reply" "Destination Unreachable" "Source Quench" "Redirect" "Alternate Host Address" "Echo" "Router Advertisement" "Router Solicitation" "Time Exceeded" "Parameter Problem" "Timestamp" "Timestamp Reply" "Information Request" "Information Reply" "Address mask Request" "Address Mask Reply" "Reserved (for Security)" "Traceroutel" "Datagram Conversion Error" "Mobile Host Redirect" "Mobile Registration Request" "Mobile Registration Reply" "Domain Name Request" "Domain Name Reply" "SKIP" "Photuris" "ICMP messages utilized by experimental mobility protocols such as Seamoby" "Extended Echo Request" "Extended Echo Reply") 
+
+  while true; do
+                echo "Type of ICMP message- ICMP messages are used by devices to talk to each other on the same network for diagnosis problems, every message has a type this option is asking you what type you want"
+		echo " "
+		echo "Some of the most commonly used options are:"
+		echo " "
+		echo "1. Echo is used to test conenction between different computers or devices to make sure thay can talk to each other "
+		echo " "
+                echo "2. Time Exceeded is sent by the firewall or router to say that an network packet (Network packet is a unit of data that is sent over a network) has reach the end of it's time to live (TTL) becasue every network packet has a TTL if that number reaches 0 before it would to reach where it was going then that message appers "
+		echo " "
+                echo "3. Destination Unreachable is a message that appers when the router or firewall was supose to send something over the network (like a message) and it nerver reach the destinatin "
+		echo " "
+                echo "4. Address Mask Request is sent to request the subnet mask of a network/device, A subnet mask is a ramdom number that is used to tell what part of an ip address is the network and what part of the ip address is the device "
+		echo " "
+                echo "5.Redirect is sent by the router to inform that there is a better way to get the infomation to where it needs to be and is redirecting to that different route "
+                echo " "
+		echo " "
+		echo "A link to the full list with more information: https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol "
+		echo " "
+    #this is asking for an input of what ICMP type you want, below it is a case that will see what number or name you inputed and only allow the code that follow so for example if you type echo or 8 it will only allow you to input 0 when it comes time to type the code 
+    read -p "Enter the ICMP type: " icmp_type
+    if [[ " ${valid_icmp[@]} " =~ " ${icmp_type} " ]]; then
+      break
+    else
+      echo "Invalid ICMP type, please try again."
+    fi
+  done
+
+  case $icmp_type in
+    "0" | "Echo Reply")
+      valid_codes=("0")
+      ;;
+    "3" | "Destination Unreachable")
+      valid_codes=("0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15")
+      ;;
+    "4" | "Source Quench")
+      valid_codes=("0")
+      ;;
+    "5" | "Redirect")
+      valid_codes=("0" "1" "2" "3")
+      ;;
+    "6" | "Alternate Host Address")
+      valid_codes=("0")
+      ;;
+    "8" | "Echo")
+      valid_codes=("0")
+      ;;
+    "9" | "Router Advertisement")
+      valid_codes=("0" "16")
+      ;;
+    "10" | "Router Solicitation")
+      valid_codes=("0")
+      ;;
+    "11" | "Time Exceeded")
+      valid_codes=("0" "1")
+      ;;
+    "12" | "Parameter Problem")
+      valid_codes=("0" "1" "2")
+      ;;
+    "13" | "Timestamp")
+      valid_codes=("0" "1")
+      ;;
+    "14" | "Timestamp Reply")
+      valid_codes=("0" "1")
+      ;;
+    "15" | "Information Request")
+      valid_codes=("0")
+      ;;
+    "16" | "Information Reply")
+      valid_codes=("0")
+      ;;
+    "17" | "Address Mask Request")
+      valid_codes=("0")
+      ;;
+    "18" | "Address Mask Reply")
+      valid_codes=("0")
+      ;;
+    "19" | "Reserved (for Security)")
+      valid_codes=("0")
+      ;;
+    "30" | "Traceroute")
+      valid_codes=("0")
+      ;;
+    "31" | "Datagram Conversion Error")
+      valid_codes=("0")
+      ;;
+    "32" | "Mobile Host Redirect")
+      valid_codes=("0")
+      ;;
+    "35" | "Mobile Registration Request")
+      valid_codes=("0")
+      ;;
+    "36" | "Mobile Registration Reply")
+      valid_codes=("0")
+      ;;
+    "37" | "Domain Name Request")
+      valid_codes=("0")
+      ;;
+    "38" | "Domain Name Reply")
+      valid_codes=("0")
+      ;;
+    "39" | "SKIP")
+      valid_codes=("0")
+      ;;
+    "40" | "Photuris")
+      valid_codes=("0" "1" "2" "3" "4" "5")
+      ;;
+    "41" | "ICMP messages utilized by experimental mobility protocols such as Seamoby")
+      valid_codes=("0")
+      ;;
+    "42" |  "Extended Echo Request")
+      valid_codes=("0")
+      ;;
+    "43" | "Extended Echo Reply")
+      valid_codes=("0")
+      ;;
+  esac
+  clear 
+  while true; do
+                echo "Code of ICMP message- ICMP messages comes with a code to identify and provide infomation on what message type is being used, this option is asking what code the message you picked  "
+		echo " "
+                echo "Examples: "
+		echo " "
+                echo "1.echo uses the code 0 "
+		echo " "
+                echo "2.Time Exceeded uses code 0 to tell with the TTL reached 0  "
+		echo " "
+                echo "3.Destination Unreachable uses codes 0 saying the network was unreachable, 1 saying the pc/network the infomation was sent from is unreacable, 3 saying the port is unreachable, 6 the network the infomation was being sent to is unknown, 7 the destination pc/network was unreachable"
+		echo " "
+                echo "4.Address Mask has a code of 0 and a type number is 17 to tell that it is an address mask request "
+		echo " "
+                echo "5.Redirect uses codes 0 saying the telling the sender network to send packets to the destination network, 1 saying the telling the sender pc/host to send packets to the destination pc/host "
+		echo " "
+		echo " "
+#this is asking for what ICMP code you want to input if one is entered that is not in the array then the error message will display
+    read -p "Enter the ICMP code: " icmp_code
+    if [[ " ${valid_codes[@]} " =~ " ${icmp_code} " ]]; then
+      break
+    else
+      echo "Invalid ICMP code, please try again."
+    fi
+  done
+
+while true; do
+#below it is a case that will convert word to numbers so for example if you type echo it will convert that to the number 8 and that is what will be in the final firewall rule 
+    case $icmp_type in
+        "Echo Request")
+            icmp_type=8
+            break;;
+        "Echo Reply")
+            icmp_type=0
+            break;;
+        "3" | "Destination Unreachable")
+	    icmp_type=3
+            break;;
+        "4" | "Source Quench")
+            icmp_type=4
+            break;;
+        "5" | "Redirect")
+            icmp_type=5
+            break;;
+        "6" | "Alternate Host Address")
+            icmp_type=6
+            break;;
+        "8" | "Echo")
+            icmp_type=8
+            break;;
+        "9" | "Router Advertisement")
+            icmp_type=9
+            break;;
+        "10" | "Router Solicitation")
+            icmp_type=10
+            break;;
+        "11" | "Time Exceeded")
+            icmp_type=11
+            break;;
+        "12" | "Parameter Problem")
+            icmp_type=12
+            break;;
+        "13" | "Timestamp")
+            icmp_type=13
+            break;;
+        "14" | "Timestamp Reply")
+            icmp_type=14
+            break;;
+        "15" | "Information Request")
+            icmp_type=15
+            break;;
+        "16" | "Information Reply")
+            icmp_type=16
+            break;;
+        "17" | "Address mask Request")
+            icmp_type=17
+            break;;
+        "18" | "Address Mask Reply")
+            icmp_type=18
+            break;;
+        "19" | "Reserved (for Security)")
+            icmp_type=19
+            break;;
+        "30" | "Traceroutel")
+            icmp_type=30
+            break;;
+        "31" | "Datagram Conversion Error")
+            icmp_type=31
+            break;;
+        "32" | "Mobile Host Redirect")
+            icmp_type=32
+            break;;
+        "35" | "Mobile Registration Request")
+            icmp_type=35
+            break;;
+        "36" | "Mobile Registration Reply")
+            icmp_type=36
+            break;;
+        "37" | "Domain Name Request")
+            icmp_type=37
+            break;;
+        "38" | "Domain Name Reply")
+            icmp_type=38
+            break;;
+        "39" | "SKIP")
+            icmp_type=39
+            break;;
+        "40" | "Photuris")
+            icmp_type=40
+            break;;
+        "41" | "ICMP messages utilized by experimental mobility protocols such as Seamoby")
+            icmp_type=41
+            break;;
+        "42" | "Extended Echo Request")
+            icmp_type=42
+            break;;
+        "43" | "Extended Echo Reply") 
+            icmp_type=43
+            break;;
+        *)
+            echo "Incorrect Input. See Options"
+
+    esac
+done  
+
+
+}
+validate_input
+
+		clear
+        #This code is asking for a user to input a display name, after entering a name the loop will allow the user to continue 
+                echo "Display name- This is the name of the firewall rule you are making, name it something that you can easily remember the purpose of the rule "
+		echo " "
+                read -p "Display Name: " display_name
+		clear
+		while true; do
+        #This code is asking the user to type either inbound or outbound for monitoring traffic if something different is given then the error message will appear 
+                        echo "Inbound or outbound- This is asking you if you want inbound or outbound traffic to be monitored, Inbound means any data that is coming from another pc/network to your pc/network like when you visit a website you are getting inbound traffic, outbound on the other hand means any data and information that is leaving your pc/network and going to another so when you upload a youtube video that is outbound "
+                        echo " "
+                        read -p "Please enter either 'inbound' or 'outbound': " bound_wiggle
+                        if [[ $bound_wiggle == "inbound" || $bound_wiggle == "outbound" ]]; then
+                                break
+                        else
+                        echo "Incorrect input. See options."
+                       #sleep twice then clear 
+                        sleep 2
+                        clear
+                        fi
+                done
+		echo " "
+		clear
+
+
+
+                # Final PowerShell command
+                #This code takes all the input given and puts it in a final PowerShell command and then asks the user either exit or press x to continue 
+                echo "The final PowerShell command is:"
+                echo "New-NetFirewallRule -DisplayName $display_name -Direction $bound_wiggle -LocalAddress $local_ip -Protocol ICMPv4 -IcmpType $icmp_type -IcmpCode $icmp_code"
+                echo "Press X to exit or any other key to continue"
+                read -n 1 -s
+                ;;
+            4)
+                echo "Exiting..."
+                exit 0
+                ;;
+            *)
+                #this is given if a option other then 1-4 was given 
+                echo "Invalid choice. Please enter a number between 1 and 4."
+                ;;
+        esac
+    else
+        echo "Invalid input. Please enter a number between 1 and 4."
+    fi
+done
