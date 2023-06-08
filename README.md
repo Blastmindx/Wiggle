@@ -7,7 +7,7 @@ Wiggle provides a unique, hands-on learning experience that allows users of the 
 
 
 Credits:
-GooseCameron – Created skeleton of the script, configured code samples from other group members to be placed in the project, completed working sections of script besides learning descriptions and ICMP code.
+GooseCameron – Created skeleton of the script, configured code samples from other group members to be placed in the project, completed/implemeted working sections of script besides learning descriptions and ICMP code.
 
 LMCM28 - Responsible for formatting and submission of professional documents, created input sanitization for the IP addresses and ports, created various code samples that Angus would implement, created simple .exe file to activate PowerShell forwarding for the windows and kali machines.
 
