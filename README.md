@@ -6,12 +6,8 @@ The main function of this application is to provide a quick to install, easy to 
 Wiggle provides a unique, hands-on learning experience that allows users of the program to apply any current knowledge they have of firewall rules & settings and expand upon that knowledge with immediate input feedback & messages.
 
 
-
-
-
-
 Credits:
-GooseCameron: – Created skeleton of the script, configured code samples from other group members to be placed in the project, completed working sections of script besides learning descriptions and ICMP code.
+GooseCameron – Created skeleton of the script, configured code samples from other group members to be placed in the project, completed working sections of script besides learning descriptions and ICMP code.
 
 LMCM28 - Responsible for formatting and submission of professional documents, created input sanitization for the IP addresses and ports, created various code samples that Angus would implement, created simple .exe file to activate PowerShell forwarding for the windows and kali machines.
 
